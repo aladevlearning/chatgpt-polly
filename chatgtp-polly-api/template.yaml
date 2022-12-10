@@ -1,0 +1,126 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  chat-gpt-polly
+
+  SAM Template for an Polly based Chat GPT API.
+
+Globals:
+  Function:
+    Timeout: 30
+    Handler: app.lambdaHandler
+    Runtime: nodejs16.x
+
+Parameters:
+  SourceBucketName:
+    Type: String
+    Default: <BUCKET_NAME_HERE>
+  OpenAIApiKey:
+    Type: String
+    Default: <API_KEY_HERE>
+  AskPath:
+    Type: String
+    Default: /ask
+  NotificationEmailAddress:
+    Type: String
+    Description: Enter the email to notify for policy violations.
+    Default: <EMAIL_HERE>
+
+Resources:
+
+  SourceBucket:
+    Type: AWS::S3::Bucket
+    DependsOn:
+      - SNSTopicPolicy
+    Properties:
+      BucketName: !Ref SourceBucketName
+      NotificationConfiguration:
+        TopicConfigurations:
+          - Event: s3:ObjectCreated:*
+            Topic: !Ref SNSTopic
+
+  SNSTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties:
+      Subscription:
+        - Protocol: email
+          Endpoint: !Ref NotificationEmailAddress
+
+  SNSTopicPolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: 's3.amazonaws.com'
+            Action: sns:Publish
+            Resource: !Ref SNSTopic
+            Condition:
+              ArnEquals:
+                aws:SourceArn: !Join ["",['arn:aws:s3:::',!Ref SourceBucketName]]
+              StringEquals:
+                aws:SourceAccount: !Ref 'AWS::AccountId'
+      Topics:
+        - !Ref SNSTopic
+
+  ChatGptPollyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+
+  ChatGptPollyStateMachine:
+    Type: AWS::Serverless::StateMachine # More info about State Machine Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-statemachine.html
+    Properties:
+      DefinitionUri: statemachine/chat_gpt_polly.asl.json
+      DefinitionSubstitutions:
+        AskChatGptFunctionArn: !GetAtt AskChatGptFunction.Arn
+        TextToSpeechFunctionArn: !GetAtt TextToSpeechFunction.Arn
+      Events:
+        ChatGptPollyApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /ask
+            RestApiId:
+              Ref: ChatGptPollyApi
+      Policies: # Find out more about SAM policy templates: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html
+        - LambdaInvokePolicy:
+            FunctionName: !Ref AskChatGptFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref TextToSpeechFunction
+
+  AskChatGptFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/ask-chatgpt/
+      Environment:
+        Variables:
+          OPENAI_API_KEY: !Ref OpenAIApiKey
+
+  TextToSpeechFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/text-to-speech-converter/
+      Environment:
+        Variables:
+          REGION: "eu-west-1"
+          OUTPUT_S3_BUCKET: !Ref SourceBucketName
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref SourceBucketName
+        - Statement:
+          - Sid: PollyPolicy
+            Effect: Allow
+            Action:
+              - polly:StartSpeechSynthesisTask
+            Resource: '*'
+
+Outputs:
+  ChatGptPollyStateMachineArn:
+    Description: "ChatGPT Polly state machine ARN"
+    Value: !Ref ChatGptPollyStateMachine
+  ChatGptPollyStateMachineRole:
+    Description: "IAM Role created for ChatGPT Polly state machine based on the specified SAM Policy Templates"
+    Value: !GetAtt ChatGptPollyStateMachineRole.Arn
