@@ -1,0 +1,14 @@
+{
+    "resourceName": "transcriptionAudioText",
+    "convertPolicyName": "speechGeneratorPolicyaa151fca",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "convertType": "speechGenerator",
+    "language": "en-US",
+    "voice": "Kevin",
+    "access": "auth"
+}

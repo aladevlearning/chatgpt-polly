@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/ask": {
+      "name": "/ask",
+      "lambdaFunction": "askByVoice",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

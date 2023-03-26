@@ -1,0 +1,13 @@
+{
+    "resourceName": "transcriptionTextAudio",
+    "convertPolicyName": "transcriptionPolicy48169314",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "convertType": "transcription",
+    "language": "en-GB",
+    "access": "auth"
+}
