@@ -65,7 +65,7 @@ function App({ signOut, user }) {
       <VerticalTimelineElement
         className="vertical-timeline-element--work speaker"
         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-        icon={<img src={user.username === "ala" ? alaLogo : faUser} alt="User logo" />}
+        icon={user.username === "ala" ? <img src={alaLogo} alt="User logo" /> : <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>}
       >
         <div>{transcript.slice()}</div>
       </VerticalTimelineElement>
@@ -103,7 +103,7 @@ function App({ signOut, user }) {
             //text: completion.data.choices[0].text,
             text: completion.Answer,
           },
-          voiceId: "Amy" // default configured on aws-exports.js
+          voiceId: "Joanna" // default configured on aws-exports.js
           // list of different options are here https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
         }
       }
