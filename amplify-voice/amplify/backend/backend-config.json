@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "askByVoice"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "amplifyLangChain"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -42,6 +50,17 @@
     }
   },
   "function": {
+    "amplifyLangChain": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "amplifyVoiceLlamaIndex": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "askByVoice": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -55,6 +74,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_amplifyLangChain_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyLangChain"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifyLangChain_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyLangChain"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifyLangChain_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyLangChain"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifyVoiceLlamaIndex_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyVoiceLlamaIndex"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifyVoiceLlamaIndex_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifyVoiceLlamaIndex"
+        }
+      ]
+    },
     "AMPLIFY_function_askByVoice_deploymentBucketName": {
       "usedBy": [
         {
@@ -90,6 +149,13 @@
       "convertType": "transcription",
       "providerPlugin": "awscloudformation",
       "service": "Transcribe"
+    }
+  },
+  "storage": {
+    "amplifyChatGptDocuments": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

@@ -13,6 +13,18 @@
           "delete"
         ]
       }
+    },
+    "/askWithDocument": {
+      "name": "/askWithDocument",
+      "lambdaFunction": "amplifyLangChain",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
     }
   }
 }

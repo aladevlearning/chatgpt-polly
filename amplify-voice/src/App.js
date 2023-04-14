@@ -16,6 +16,7 @@ import './App.css';
 import awsconfig from './aws-exports';
 import chatGptLogo from "./chatgpt_logo.webp";
 
+import { FileUploader } from '@aws-amplify/ui-react';
 
 Amplify.configure(awsconfig);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
@@ -73,7 +74,7 @@ function App({ signOut, user }) {
 
     setLineColor("white");
 
-    const completion = await API.post('apiAskChatGpt', '/ask', {
+    const completion = await API.post('apiAskChatGpt', '/askWithDocument', {
       body: {
         input: {
           question: transcript
@@ -144,6 +145,10 @@ function App({ signOut, user }) {
         </nav>
       </header>
       <div style={styles.container}>
+       <FileUploader
+            acceptedFileTypes={['text/*']}
+            accessLevel="private"
+          />
       </div>
       <VerticalTimeline
         lineColor = {lineColor}

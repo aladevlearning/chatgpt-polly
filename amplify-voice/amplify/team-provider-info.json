@@ -25,6 +25,15 @@
           "deploymentBucketName": "amplify-amplifyvoice-dev-222215-deployment",
           "s3Key": "amplify-builds/askByVoice-41494d364837734d6143-build.zip",
           "secretsPathAmplifyAppId": "d3d42w42r85bwr"
+        },
+        "amplifyVoiceLlamaIndex": {
+          "deploymentBucketName": "amplify-amplifyvoice-dev-222215-deployment",
+          "s3Key": "amplify-builds/amplifyVoiceLlamaIndex-49374957762b51624456-build.zip"
+        },
+        "amplifyLangChain": {
+          "deploymentBucketName": "amplify-amplifyvoice-dev-222215-deployment",
+          "s3Key": "amplify-builds/amplifyLangChain-4343314f642b364b3579-build.zip",
+          "secretsPathAmplifyAppId": "d3d42w42r85bwr"
         }
       },
       "api": {
@@ -32,6 +41,9 @@
       },
       "hosting": {
         "S3AndCloudFront": {}
+      },
+      "storage": {
+        "amplifyChatGptDocuments": {}
       }
     }
   }

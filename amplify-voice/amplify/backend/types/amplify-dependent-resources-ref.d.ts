@@ -18,6 +18,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "amplifyLangChain": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "askByVoice": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -47,6 +54,12 @@ export type AmplifyDependentResourcesAttributes = {
     "transcriptionTextAudio": {
       "language": "string",
       "region": "string"
+    }
+  },
+  "storage": {
+    "amplifyChatGptDocuments": {
+      "BucketName": "string",
+      "Region": "string"
     }
   }
 }
