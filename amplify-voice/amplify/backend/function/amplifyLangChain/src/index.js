@@ -23,29 +23,33 @@ exports.handler = async (event) => {
 
     const {Parameter} = await ssmClient.send(command);
 
-
     let client = new S3Client(config);
+
+    const identityId =  JSON.parse(event.body).input.identityId;
+
+
     const bucketName =  "amplify-chatgpt-documents222215-dev";
 
     const s3ObjectList = await client.send(new ListObjectsV2Command({
-        Bucket: bucketName,
-        MaxKeys: 1
+        Bucket: bucketName
     }));
 
     let corpus = "";
 
     for(const object of s3ObjectList.Contents) {
-      const response = await client.send(new GetObjectCommand({Bucket:bucketName,Key: object.Key}));
-      corpus += `${await streamToString(response.Body)} `;
+      console.log("Key: ", object.Key);
+      if (object.Key && object.Key.startsWith(`private/${identityId}`)) {
+        const response = await client.send(new GetObjectCommand({Bucket:bucketName,Key: object.Key}));
+        corpus += `${await streamToString(response.Body)} `;
+      }
     }
 
+    console.log("Corpus data: ", corpus || 'N/A')
     const document = new Document({ pageContent: corpus });
 
     const question =  JSON.parse(event.body).input.question;
 
     const model = new OpenAI({ openAIApiKey: Parameter.Value, temperature: 0.9, max_tokens: 2048 });
-
-    //const res = await model.call(question);
 
     const chainA = loadQAStuffChain(model);
     const answer = await chainA.call({

@@ -6,7 +6,7 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { faCircleStop, faMicrophone, faUser, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Amplify, API } from 'aws-amplify';
+import { Amplify, API, Auth } from 'aws-amplify';
 import React, { useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
@@ -74,10 +74,13 @@ function App({ signOut, user }) {
 
     setLineColor("white");
 
+    const {identityId} = await Auth.currentCredentials();
+
     const completion = await API.post('apiAskChatGpt', '/askWithDocument', {
       body: {
         input: {
-          question: transcript
+          question: transcript,
+          identityId
         }
       },
     });
