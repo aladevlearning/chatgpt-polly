@@ -81,7 +81,7 @@ function App({ signOut, user }) {
 
     const {identityId} = await Auth.currentCredentials();
 
-    const completion = await API.post('apiAskChatGpt', '/askWithDocument', {
+    const completion = await API.post('apiAskChatGpt', '/ask', {
       body: {
         input: {
           question: transcript,
