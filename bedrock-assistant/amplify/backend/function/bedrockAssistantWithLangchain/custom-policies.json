@@ -1,0 +1,24 @@
+[
+  {
+    "Action": [
+      "bedrock:ListFoundationModels"],
+    "Resource": [
+      "*"
+      ]
+  },
+  {
+    "Action": [
+      "bedrock:InvokeModel"],
+    "Resource": [
+      "arn:aws:bedrock:us-east-1::foundation-model/ai21.j2-ultra"
+      ]
+  },
+  {
+    "Action": [
+      "s3:*"],
+    "Resource": [
+       "arn:aws:s3:::bedrockassistantd9ae4478d21f46f99c63703086a936a111837-dev",
+      "arn:aws:s3:::bedrockassistantd9ae4478d21f46f99c63703086a936a111837-dev/*"
+      ]
+  }
+]

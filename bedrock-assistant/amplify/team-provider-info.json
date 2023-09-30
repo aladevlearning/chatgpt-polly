@@ -22,7 +22,11 @@
       "function": {
         "bedrockassistantaeff276e": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockassistantaeff276e-5347746d74794a4f7439-build.zip"
+          "s3Key": "amplify-builds/bedrockassistantaeff276e-2b6a2f754b787a4a4173-build.zip"
+        },
+        "bedrockAssistantWithLangchain": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockAssistantWithLangchain-4573735476427938482b-build.zip"
         }
       },
       "api": {

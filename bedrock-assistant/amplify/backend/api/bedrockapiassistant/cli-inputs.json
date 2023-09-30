@@ -12,6 +12,18 @@
           "update"
         ]
       }
+    },
+    "/ask-bedrock-with-langchain": {
+      "name": "/ask-bedrock-with-langchain",
+      "lambdaFunction": "bedrockAssistantWithLangchain",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
     }
   }
 }
