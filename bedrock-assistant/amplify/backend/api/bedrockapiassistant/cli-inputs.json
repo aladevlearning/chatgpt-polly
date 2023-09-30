@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/ask": {
+      "name": "/ask",
+      "lambdaFunction": "bedrockassistantaeff276e",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}
