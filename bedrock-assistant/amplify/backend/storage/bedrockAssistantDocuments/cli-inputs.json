@@ -1,0 +1,13 @@
+{
+  "resourceName": "bedrockAssistantDocuments",
+  "policyUUID": "e75a6bea",
+  "bucketName": "bedrockassistantd9ae4478d21f46f99c63703086a936a",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

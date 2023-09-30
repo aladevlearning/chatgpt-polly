@@ -1,0 +1,16 @@
+[
+  {
+    "Action": [
+      "bedrock:ListFoundationModels"],
+    "Resource": [
+      "*"
+      ]
+  },
+  {
+    "Action": [
+      "bedrock:InvokeModel"],
+    "Resource": [
+      "arn:aws:bedrock:us-east-1::foundation-model/ai21.j2-ultra"
+      ]
+  }
+]

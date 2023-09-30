@@ -1,0 +1,39 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bedrockassistant-dev-111837-authRole",
+      "UnauthRoleArn": "arn:aws:iam::663838754385:role/amplify-bedrockassistant-dev-111837-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::663838754385:role/amplify-bedrockassistant-dev-111837-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+      "UnauthRoleName": "amplify-bedrockassistant-dev-111837-unauthRole",
+      "StackName": "amplify-bedrockassistant-dev-111837",
+      "StackId": "arn:aws:cloudformation:us-east-1:663838754385:stack/amplify-bedrockassistant-dev-111837/1a1b1100-5f83-11ee-ae0f-0acc79891d6d",
+      "AmplifyAppId": "d2mqhybwge3hrz",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-bedrockassistant-dev-111837-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "bedrockassistant473ac0ef": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
+      },
+      "function": {
+        "bedrockassistantaeff276e": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockassistantaeff276e-5347746d74794a4f7439-build.zip"
+        }
+      },
+      "api": {
+        "bedrockapiassistant": {}
+      },
+      "predictions": {
+        "speechGenerator87419f2b": {}
+      },
+      "storage": {
+        "bedrockAssistantDocuments": {}
+      }
+    }
+  }
+}
