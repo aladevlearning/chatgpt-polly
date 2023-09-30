@@ -44,5 +44,11 @@ export type AmplifyDependentResourcesAttributes = {
       "region": "string",
       "voice": "string"
     }
+  },
+  "storage": {
+    "bedrockAssistantDocuments": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

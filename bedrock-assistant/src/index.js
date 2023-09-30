@@ -15,8 +15,8 @@ Amplify.configure({
   API: {
       endpoints: [
           {
-              name: "apiAskChatGpt",
-              endpoint: "https://wko2ca34z0.execute-api.eu-west-1.amazonaws.com/dev"
+              name: "bedrockapiassistant",
+              endpoint: "https://0jxx0newxc.execute-api.us-east-1.amazonaws.com/dev"
           }
       ]
   }

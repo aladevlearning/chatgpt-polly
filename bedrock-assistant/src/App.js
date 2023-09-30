@@ -81,7 +81,7 @@ function App({ signOut, user }) {
 
     const {identityId} = await Auth.currentCredentials();
 
-    const completion = await API.post('apiAskChatGpt', '/ask', {
+    const completion = await API.post('bedrockapiassistant', '/ask', {
       body: {
         input: {
           question: transcript,

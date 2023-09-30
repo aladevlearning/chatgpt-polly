@@ -78,5 +78,12 @@
       "providerPlugin": "awscloudformation",
       "service": "Polly"
     }
+  },
+  "storage": {
+    "bedrockAssistantDocuments": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }
