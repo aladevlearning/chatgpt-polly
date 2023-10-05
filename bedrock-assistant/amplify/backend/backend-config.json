@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "bedrockassistantaeff276e"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -42,6 +50,11 @@
     }
   },
   "function": {
+    "bedrockLangchainAssistant": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "bedrockassistantaeff276e": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -52,24 +65,6 @@
     "S3AndCloudFront": {
       "providerPlugin": "awscloudformation",
       "service": "S3AndCloudFront"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_bedrockassistantaeff276e_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "bedrockassistantaeff276e"
-        }
-      ]
-    },
-    "AMPLIFY_function_bedrockassistantaeff276e_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "bedrockassistantaeff276e"
-        }
-      ]
     }
   },
   "predictions": {
