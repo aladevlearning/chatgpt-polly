@@ -17,6 +17,14 @@
           ],
           "category": "function",
           "resourceName": "bedrockLangchainAssistant"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bedrockAssistantRag"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -49,13 +57,29 @@
       "service": "Cognito"
     }
   },
+  "custom": {
+    "vectorDatabase": {
+      "providerPlugin": "awscloudformation",
+      "service": "customCDK"
+    }
+  },
   "function": {
+    "bedrockAssistantRag": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "bedrockLangchainAssistant": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
     "bedrockassistantaeff276e": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "indexingDocument": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -76,9 +100,23 @@
   },
   "storage": {
     "bedrockAssistantDocuments": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "S3"
+    },
+    "dynamodbMemories": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

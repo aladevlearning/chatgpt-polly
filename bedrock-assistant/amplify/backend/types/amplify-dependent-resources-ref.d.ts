@@ -17,7 +17,19 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolName": "string"
     }
   },
+  "custom": {
+    "vectorDatabase": {
+      "CollectionEndpoint": "string"
+    }
+  },
   "function": {
+    "bedrockAssistantRag": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "bedrockLangchainAssistant": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -26,6 +38,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "bedrockassistantaeff276e": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "indexingDocument": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -56,6 +75,14 @@ export type AmplifyDependentResourcesAttributes = {
     "bedrockAssistantDocuments": {
       "BucketName": "string",
       "Region": "string"
+    },
+    "dynamodbMemories": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
     }
   }
 }

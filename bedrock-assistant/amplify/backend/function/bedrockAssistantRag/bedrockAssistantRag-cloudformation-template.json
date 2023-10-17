@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bedrockLangchainAssistant",
+            "bedrockAssistantRag",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bedrockLangchainAssistant",
+                  "bedrockAssistantRag",
                   "-",
                   {
                     "Ref": "env"
@@ -80,8 +80,7 @@
         },
         "Runtime": "python3.9",
         "Layers": [],
-        "Timeout": 25,
-        "MemorySize": 1024
+        "Timeout": 25
       }
     },
     "LambdaExecutionRole": {
@@ -90,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bedrockassistantLambdaRolef56b9054",
+            "bedrockassistantLambdaRolea97c4145",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bedrockassistantLambdaRolef56b9054",
+                  "bedrockassistantLambdaRolea97c4145",
                   "-",
                   {
                     "Ref": "env"
@@ -180,16 +179,6 @@
               "Resource": [
                 "arn:aws:bedrock:us-east-1::foundation-model/ai21.j2-ultra-v1",
                 "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v1"
-              ],
-              "Effect": "Allow"
-            },
-            {
-              "Action": [
-                "dynamodb:GetItem",
-                "dynamodb:PutItem"
-              ],
-              "Resource": [
-                "arn:aws:dynamodb:us-east-1:663838754385:table/memories-dev"
               ],
               "Effect": "Allow"
             }

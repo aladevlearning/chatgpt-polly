@@ -1,0 +1,10 @@
+{
+  "resourceName": "dynamodbMemories",
+  "tableName": "memories",
+  "partitionKey": {
+    "fieldName": "SessionId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

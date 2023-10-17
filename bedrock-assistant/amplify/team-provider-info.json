@@ -27,7 +27,18 @@
         "bedrockAssistantWithLangchain": {
           "bedrockModelId": "BEDROCK_MODEL_ID"
         },
-        "bedrockLangchainAssistant": {}
+        "bedrockLangchainAssistant": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockLangchainAssistant-7551554957326f643257-build.zip"
+        },
+        "indexingDocument": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/indexingDocument-6855485246426d616c31-build.zip"
+        },
+        "bedrockAssistantRag": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockAssistantRag-5163613452786f33476f-build.zip"
+        }
       },
       "api": {
         "bedrockapiassistant": {}
@@ -36,7 +47,11 @@
         "speechGenerator87419f2b": {}
       },
       "storage": {
-        "bedrockAssistantDocuments": {}
+        "bedrockAssistantDocuments": {},
+        "dynamodbMemories": {}
+      },
+      "custom": {
+        "vectorDatabase": {}
       }
     }
   }

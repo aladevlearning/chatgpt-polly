@@ -24,6 +24,18 @@
           "update"
         ]
       }
+    },
+    "/ask-rag": {
+      "name": "/ask-rag",
+      "lambdaFunction": "bedrockAssistantRag",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
     }
   }
 }
