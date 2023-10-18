@@ -36,13 +36,12 @@ export class cdkStack extends cdk.Stack {
       policy: '[{"Rules":[{"ResourceType":"collection","Resource":["collection/document-collection"]}, {"ResourceType":"dashboard","Resource":["collection/document-collection"]}],"AllowFromPublic":true}]',
       type: 'network'
     });
-    
 
     collection.addDependency(netPolicy);
     
     const accessPolicy = [
      {
-        "Description": "Rule 1",
+        "Description": "Access rule to allow actions on the OpenSearch cluster",
         "Rules":[
            {
               "ResourceType":"collection",
@@ -84,9 +83,8 @@ export class cdkStack extends cdk.Stack {
       value: collection.attrCollectionEndpoint,
     });
     
-    new ssm.StringParameter(this, `OpenSearchParameter-${amplifyProjectInfo.projectName}`, {
-      parameterName: "/opensearch/serverless/endpoint",
-      description: "OpenSearch Serverless endpoint",
+    const parameter = new ssm.StringParameter(this, `OpenSearchEndpoint-${amplifyProjectInfo.projectName}`, {
+      parameterName: '/opensearch/endpoint',
       stringValue: collection.attrCollectionEndpoint,
     });
     

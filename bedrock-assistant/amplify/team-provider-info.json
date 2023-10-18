@@ -29,15 +29,15 @@
         },
         "bedrockLangchainAssistant": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockLangchainAssistant-7551554957326f643257-build.zip"
+          "s3Key": "amplify-builds/bedrockLangchainAssistant-334f7a2b6139596a7830-build.zip"
         },
         "indexingDocument": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/indexingDocument-6855485246426d616c31-build.zip"
+          "s3Key": "amplify-builds/indexingDocument-566c3049704543455979-build.zip"
         },
         "bedrockAssistantRag": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockAssistantRag-5163613452786f33476f-build.zip"
+          "s3Key": "amplify-builds/bedrockAssistantRag-4e4d476a6f3155542f30-build.zip"
         }
       },
       "api": {

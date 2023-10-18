@@ -4,7 +4,7 @@ from urllib.parse import unquote
 from opensearchpy import OpenSearch, RequestsHttpConnection, exceptions
 from requests_aws4auth import AWS4Auth
 
-endpoint = "iojcjjtuooek7hjf1uhh.us-east-1.aoss.amazonaws.com"
+endpoint = "6hvwxeseal2dy8pby1y8.us-east-1.aoss.amazonaws.com"
 service = 'aoss'
 region = "us-east-1"
 

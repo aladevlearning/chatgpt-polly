@@ -15,7 +15,7 @@ from langchain.chains.question_answering import load_qa_chain
 from opensearchpy import RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 
-endpoint = "https://iojcjjtuooek7hjf1uhh.us-east-1.aoss.amazonaws.com"
+endpoint = "https://6hvwxeseal2dy8pby1y8.us-east-1.aoss.amazonaws.com"
 service = 'aoss'
 region = "us-east-1"
                     

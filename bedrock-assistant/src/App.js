@@ -81,7 +81,8 @@ function App({ signOut, user }) {
 
     const {identityId} = await Auth.currentCredentials();
 
-    const completion = await API.post('bedrockapiassistant', '/ask', {
+    // ask, ask-with-langchain, ask-rag
+    const completion = await API.post('bedrockapiassistant', '/ask-with-langchain', {
       body: {
         input: {
           question: transcript,
