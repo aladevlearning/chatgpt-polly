@@ -12,6 +12,30 @@
           "update"
         ]
       }
+    },
+    "/ask-with-langchain": {
+      "name": "/ask-with-langchain",
+      "lambdaFunction": "bedrockLangchainAssistant",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    },
+    "/ask-rag": {
+      "name": "/ask-rag",
+      "lambdaFunction": "bedrockAssistantRag",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
     }
   }
 }

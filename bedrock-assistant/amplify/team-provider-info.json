@@ -22,7 +22,22 @@
       "function": {
         "bedrockassistantaeff276e": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockassistantaeff276e-5347746d74794a4f7439-build.zip"
+          "s3Key": "amplify-builds/bedrockassistantaeff276e-63526c776141756d5765-build.zip"
+        },
+        "bedrockAssistantWithLangchain": {
+          "bedrockModelId": "BEDROCK_MODEL_ID"
+        },
+        "bedrockLangchainAssistant": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockLangchainAssistant-334f7a2b6139596a7830-build.zip"
+        },
+        "indexingDocument": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/indexingDocument-566c3049704543455979-build.zip"
+        },
+        "bedrockAssistantRag": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/bedrockAssistantRag-4e4d476a6f3155542f30-build.zip"
         }
       },
       "api": {
@@ -32,7 +47,11 @@
         "speechGenerator87419f2b": {}
       },
       "storage": {
-        "bedrockAssistantDocuments": {}
+        "bedrockAssistantDocuments": {},
+        "dynamodbMemories": {}
+      },
+      "custom": {
+        "vectorDatabase": {}
       }
     }
   }

@@ -9,6 +9,22 @@
           ],
           "category": "function",
           "resourceName": "bedrockassistantaeff276e"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bedrockAssistantRag"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -41,8 +57,29 @@
       "service": "Cognito"
     }
   },
+  "custom": {
+    "vectorDatabase": {
+      "providerPlugin": "awscloudformation",
+      "service": "customCDK"
+    }
+  },
   "function": {
+    "bedrockAssistantRag": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "bedrockLangchainAssistant": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "bedrockassistantaeff276e": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "indexingDocument": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -55,6 +92,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_bedrockAssistantRag_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockAssistantRag"
+        }
+      ]
+    },
+    "AMPLIFY_function_bedrockAssistantRag_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockAssistantRag"
+        }
+      ]
+    },
+    "AMPLIFY_function_bedrockAssistantWithLangchain_bedrockModelId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockAssistantWithLangchain"
+        }
+      ]
+    },
+    "AMPLIFY_function_bedrockLangchainAssistant_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
+        }
+      ]
+    },
+    "AMPLIFY_function_bedrockLangchainAssistant_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
+        }
+      ]
+    },
     "AMPLIFY_function_bedrockassistantaeff276e_deploymentBucketName": {
       "usedBy": [
         {
@@ -70,6 +147,22 @@
           "resourceName": "bedrockassistantaeff276e"
         }
       ]
+    },
+    "AMPLIFY_function_indexingDocument_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ]
+    },
+    "AMPLIFY_function_indexingDocument_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ]
     }
   },
   "predictions": {
@@ -81,9 +174,23 @@
   },
   "storage": {
     "bedrockAssistantDocuments": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "S3"
+    },
+    "dynamodbMemories": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }
