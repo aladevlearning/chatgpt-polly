@@ -15,12 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "indexName": {
-      "Type": "String"
-    },
-    "region": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -53,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bedrockLangchainAssistant",
+            "opensearchLangchain",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bedrockLangchainAssistant",
+                  "opensearchLangchain",
                   "-",
                   {
                     "Ref": "env"
@@ -74,10 +68,7 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "region"
-            },
-            "INDEX_NAME": {
-              "Ref": "indexName"
+              "Ref": "AWS::Region"
             }
           }
         },
@@ -89,8 +80,7 @@
         },
         "Runtime": "python3.9",
         "Layers": [],
-        "Timeout": 25,
-        "MemorySize": 1024
+        "Timeout": 25
       }
     },
     "LambdaExecutionRole": {
@@ -99,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "bedrockassistantLambdaRolef56b9054",
+            "bedrockassistantLambdaRolef0224b79",
             {
               "Fn::Join": [
                 "",
                 [
-                  "bedrockassistantLambdaRolef56b9054",
+                  "bedrockassistantLambdaRolef0224b79",
                   "-",
                   {
                     "Ref": "env"
@@ -194,11 +184,30 @@
             },
             {
               "Action": [
-                "dynamodb:GetItem",
-                "dynamodb:PutItem"
+                "ssm:GetParameter"
               ],
               "Resource": [
-                "arn:aws:dynamodb:us-east-1:663838754385:table/memories-dev"
+                "arn:aws:ssm:us-east-1:663838754385:parameter/opensearch/serverless/endpoint"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Action": [
+                "aoss:APIAccessAll",
+                "aoss:DashboardsAccessAll"
+              ],
+              "Resource": [
+                "*"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Action": [
+                "aoss:*"
+              ],
+              "Resource": [
+                "arn:aws:aoss:us-east-1:663838754385:collection/document_collection",
+                "arn:aws:aoss:us-east-1:663838754385:dashboards/default"
               ],
               "Effect": "Allow"
             }

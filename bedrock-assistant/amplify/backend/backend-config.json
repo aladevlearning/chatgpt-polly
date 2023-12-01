@@ -58,7 +58,7 @@
     }
   },
   "custom": {
-    "vectorDatabase": {
+    "vectorDb": {
       "providerPlugin": "awscloudformation",
       "service": "customCDK"
     }
@@ -80,6 +80,11 @@
       "service": "Lambda"
     },
     "indexingDocument": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "opensearchLangchain": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -124,6 +129,22 @@
         }
       ]
     },
+    "AMPLIFY_function_bedrockLangchainAssistant_indexName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
+        }
+      ]
+    },
+    "AMPLIFY_function_bedrockLangchainAssistant_region": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bedrockLangchainAssistant"
+        }
+      ]
+    },
     "AMPLIFY_function_bedrockLangchainAssistant_s3Key": {
       "usedBy": [
         {
@@ -156,11 +177,43 @@
         }
       ]
     },
+    "AMPLIFY_function_indexingDocument_indexName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ]
+    },
+    "AMPLIFY_function_indexingDocument_region": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "indexingDocument"
+        }
+      ]
+    },
     "AMPLIFY_function_indexingDocument_s3Key": {
       "usedBy": [
         {
           "category": "function",
           "resourceName": "indexingDocument"
+        }
+      ]
+    },
+    "AMPLIFY_function_opensearchLangchain_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "opensearchLangchain"
+        }
+      ]
+    },
+    "AMPLIFY_function_opensearchLangchain_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "opensearchLangchain"
         }
       ]
     }

@@ -29,15 +29,23 @@
         },
         "bedrockLangchainAssistant": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockLangchainAssistant-334f7a2b6139596a7830-build.zip"
+          "s3Key": "amplify-builds/bedrockLangchainAssistant-4956495944722b754d6b-build.zip",
+          "indexName": "ix_documents",
+          "region": "us-east-1"
         },
         "indexingDocument": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/indexingDocument-566c3049704543455979-build.zip"
+          "s3Key": "amplify-builds/indexingDocument-584442756f624e337367-build.zip",
+          "indexName": "ix_documents",
+          "region": "us-east-1"
         },
         "bedrockAssistantRag": {
           "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
-          "s3Key": "amplify-builds/bedrockAssistantRag-4e4d476a6f3155542f30-build.zip"
+          "s3Key": "amplify-builds/bedrockAssistantRag-41575474524a7442594d-build.zip"
+        },
+        "opensearchLangchain": {
+          "deploymentBucketName": "amplify-bedrockassistant-dev-111837-deployment",
+          "s3Key": "amplify-builds/opensearchLangchain-6266496b6c4548614537-build.zip"
         }
       },
       "api": {
@@ -51,7 +59,7 @@
         "dynamodbMemories": {}
       },
       "custom": {
-        "vectorDatabase": {}
+        "vectorDb": {}
       }
     }
   }

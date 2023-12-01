@@ -18,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "custom": {
-    "vectorDatabase": {
+    "vectorDb": {
       "CollectionEndpoint": "string"
     }
   },
@@ -45,6 +45,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "indexingDocument": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "opensearchLangchain": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

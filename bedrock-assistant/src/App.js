@@ -19,7 +19,7 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import awsconfig from './aws-exports';
-import chatGptLogo from "./chatgpt_logo.webp";
+import bedrockLogo from "./bedrock.png";
 import {Routes , Route, Link} from "react-router-dom" ;
 import Upload from './components/Upload/Upload';
 
@@ -99,7 +99,7 @@ function App({ signOut, user }) {
         className="vertical-timeline-element--work bot"
         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
         icon={<picture>
-          <img src={chatGptLogo} alt="chatgpr logo" />
+          <img src={bedrockLogo} alt="bedrock logo" />
         </picture>}
       >
         <div>{completion.Answer}</div>

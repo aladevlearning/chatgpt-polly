@@ -36,12 +36,13 @@ export class cdkStack extends cdk.Stack {
       policy: '[{"Rules":[{"ResourceType":"collection","Resource":["collection/document-collection"]}, {"ResourceType":"dashboard","Resource":["collection/document-collection"]}],"AllowFromPublic":true}]',
       type: 'network'
     });
+    
 
     collection.addDependency(netPolicy);
     
     const accessPolicy = [
      {
-        "Description": "Access rule to allow actions on the OpenSearch cluster",
+        "Description": "Rule 1",
         "Rules":[
            {
               "ResourceType":"collection",
@@ -66,6 +67,7 @@ export class cdkStack extends cdk.Stack {
            "arn:aws:iam::663838754385:role/bedrockassistantLambdaRoledc0e45e1-dev",
            "arn:aws:iam::663838754385:role/bedrockassistantLambdaRolef56b9054-dev",
            "arn:aws:iam::663838754385:role/bedrockassistantLambdaRolea97c4145-dev",
+           "arn:aws:iam::663838754385:role/bedrockassistantLambdaRolef0224b79-dev",
            "arn:aws:iam::663838754385:user/alatech"
         ]
       }
@@ -83,8 +85,9 @@ export class cdkStack extends cdk.Stack {
       value: collection.attrCollectionEndpoint,
     });
     
-    const parameter = new ssm.StringParameter(this, `OpenSearchEndpoint-${amplifyProjectInfo.projectName}`, {
-      parameterName: '/opensearch/endpoint',
+    new ssm.StringParameter(this, `OpenSearchParameter-${amplifyProjectInfo.projectName}`, {
+      parameterName: "/opensearch/serverless/endpoint",
+      description: "OpenSearch Serverless endpoint",
       stringValue: collection.attrCollectionEndpoint,
     });
     

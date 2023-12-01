@@ -15,6 +15,12 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "indexName": {
+      "Type": "String"
+    },
+    "region": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -68,7 +74,10 @@
               "Ref": "env"
             },
             "REGION": {
-              "Ref": "AWS::Region"
+              "Ref": "region"
+            },
+            "INDEX_NAME": {
+              "Ref": "indexName"
             }
           }
         },
@@ -177,7 +186,37 @@
                 "bedrock:InvokeModel"
               ],
               "Resource": [
-                "arn:aws:bedrock:us-east-1::foundation-model/ai21.j2-ultra-v1"
+                "arn:aws:bedrock:us-east-1::foundation-model/ai21.j2-ultra-v1",
+                "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v1"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Action": [
+                "ssm:GetParameter"
+              ],
+              "Resource": [
+                "arn:aws:ssm:us-east-1:663838754385:parameter/opensearch/serverless/endpoint"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Action": [
+                "aoss:APIAccessAll",
+                "aoss:DashboardsAccessAll"
+              ],
+              "Resource": [
+                "*"
+              ],
+              "Effect": "Allow"
+            },
+            {
+              "Action": [
+                "aoss:*"
+              ],
+              "Resource": [
+                "arn:aws:aoss:us-east-1:663838754385:collection/document_collection",
+                "arn:aws:aoss:us-east-1:663838754385:dashboards/default"
               ],
               "Effect": "Allow"
             }

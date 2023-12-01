@@ -4,7 +4,6 @@ from urllib.parse import unquote
 from opensearchpy import OpenSearch, RequestsHttpConnection, exceptions
 from requests_aws4auth import AWS4Auth
 
-endpoint = "6hvwxeseal2dy8pby1y8.us-east-1.aoss.amazonaws.com"
 service = 'aoss'
 region = "us-east-1"
 
@@ -14,6 +13,9 @@ awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
                    region, service, session_token=credentials.token)
   
 s3 = boto3.client('s3')
+
+ssm = boto3.client('ssm')
+endpoint = ssm.get_parameter(Name='/opensearch/endpoint')["Parameter"]["Value"].replace("https://", "")
 
 ops_client = OpenSearch(
         hosts=[{'host': endpoint, 'port': 443}],
